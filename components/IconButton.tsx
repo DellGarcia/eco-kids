@@ -5,7 +5,6 @@ interface IIconProps {
     icon: ImageSourcePropType,
     selected: boolean,
     onPress: () => void,
-    clear: 
 }
 
 const buttonWidth = 80;
