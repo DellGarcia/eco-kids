@@ -14,9 +14,11 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-      <Image source={logo} style={styles.logo}/>
+      <View style={styles.image_container}>
+        <Image source={logo} style={styles.logo}/>
+      </View>
       <TouchableOpacity style={styles.button}>
-        <Text style={{color: 'white'}}>Começar</Text>
+        <Text style={styles.button_text}>Começar</Text>
       </TouchableOpacity>
     </View>
   );
@@ -31,12 +33,29 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    width: 200,
-    height: 200
+    width: 220,
+    height: 220
   },
 
   button: {
-    
+    //flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 100,
+    height: 40,
+    backgroundColor: 'green',
+    marginBottom: 50,
+    borderRadius: 10
+  },
+
+  image_container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  button_text: {
+    color: 'white'
   }
 
 });

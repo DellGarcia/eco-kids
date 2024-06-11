@@ -4,23 +4,23 @@ import { Image, TouchableOpacity, StyleSheet, ImageSourcePropType } from "react-
 interface IIconProps {
     icon: ImageSourcePropType,
     selected: boolean,
+    isHidden?: boolean,
     onPress: () => void,
 }
 
 const buttonWidth = 80;
 const buttonHeight = 80;
 
-export function IconButton({ onPress, selected, icon}: IIconProps) {
+export function IconButton({ onPress, selected, icon, isHidden = false}: IIconProps) {
     const [isSelected, setIsSelected] = useState(selected);
 
     return (
         <TouchableOpacity onPressOut={() => {
-            if(!isSelected) {
-                onPress()
-            }
+            onPress()
+            
             setIsSelected(!isSelected)
         }}>
-            <Image source={icon} style={isSelected ? styles.trashcanSelected : styles.trashcan}/>
+            <Image source={icon} style={isHidden ? styles.hidden : styles.trashcan} resizeMode="contain"/>
         </TouchableOpacity>
     );
 } 
@@ -36,7 +36,11 @@ const styles = StyleSheet.create({
         width: buttonWidth,
         height: buttonHeight,
         margin: 20,
-        borderColor: 'yellow',
-        borderWidth: 5,
-    } 
+        // borderColor: 'green',
+        // borderWidth: 5,
+    },
+
+    hidden: {
+        display: 'none'
+    }
 })
